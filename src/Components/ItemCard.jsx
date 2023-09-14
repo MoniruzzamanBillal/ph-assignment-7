@@ -1,25 +1,25 @@
 import { BiDollar } from "react-icons/bi";
 import { BsBook } from "react-icons/bs";
 
-const ItemCard = () => {
+const ItemCard = ({ element, handleClick }) => {
+  //   console.log(element);
+
+  const { cover, heading, description, price, credit } = element;
+
   return (
     <>
       {/* card starts  */}
-      <div class=" p-2 bg-gray-50 border border-gray-200 rounded shadow cursor-pointer">
+      <div className=" p-2 bg-gray-50 border border-gray-200 rounded shadow cursor-pointer">
         {/* card image starts  */}
         <div className="cardImage  mb-3 ">
-          <img
-            src="../public/images/Rectangle 2-1.png"
-            alt=""
-            className=" w-full h-full "
-          />
+          <img src={cover} alt="" className=" w-full h-full " />
         </div>
         {/* card image ends */}
 
         {/* card heading starts  */}
         <div className="cardHeading  mb-3 ">
-          <h5 class=" text-xl font-bold tracking-tight text-gray-800">
-            Introduction to C Programming
+          <h5 className=" text-xl font-bold tracking-tight text-gray-800">
+            {heading}
           </h5>
         </div>
         {/* card heading ends  */}
@@ -27,10 +27,7 @@ const ItemCard = () => {
         {/* card description starts  */}
 
         <div className="cardDescription mb-4 ">
-          <p class=" font-normal ">
-            It is a long established fact that a reader will be distracted by
-            the readable content of a page when looking at its layout.
-          </p>
+          <p className=" font-normal ">{description}</p>
         </div>
 
         {/* card description ends */}
@@ -46,7 +43,9 @@ const ItemCard = () => {
 
           {/* price section  */}
           <div className="priceSection  text-xl text-gray-800 ">
-            <p>Price : 25000</p>
+            <p>
+              Price : <span> {price} </span>
+            </p>
           </div>
           {/* price section  */}
 
@@ -58,7 +57,9 @@ const ItemCard = () => {
 
           {/* credit section  */}
           <div className="creditSection  text-xl text-gray-800 ">
-            <p>Credit : 2hr</p>
+            <p>
+              Credit : <span>{credit}</span>hr
+            </p>
           </div>
           {/* credit section  */}
 
@@ -68,8 +69,11 @@ const ItemCard = () => {
         {/* card details ends */}
 
         {/* card button starts  */}
-        <div className="cardButton px-3 py-2 text-center bg-blue-700 hover:bg-blue-800 rounded-md text-white active:scale-[.99]  ">
-          <button class=" font-medium ">Select</button>
+        <div
+          className="cardButton px-3 py-2 text-center bg-blue-700 hover:bg-blue-800 rounded-md text-white active:scale-[.99]"
+          onClick={() => handleClick(element)}
+        >
+          <button className=" font-medium ">Select</button>
         </div>
 
         {/* card button ends  */}

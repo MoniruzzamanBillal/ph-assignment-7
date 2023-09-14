@@ -6,6 +6,11 @@ import ItemCard from "./Components/ItemCard";
 function App() {
   const [datas, setDatas] = useState([]);
 
+  const handleClick = (element) => {
+    // console.log("button clicked ");
+    // console.log(element);
+  };
+
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch("blog.json");
@@ -32,12 +37,17 @@ function App() {
         <div className="cardLeft  w-[78%] ">
           <div className="cardContainer bg-sky-400 grid grid-cols-3 gap-x-3 gap-y-4 ">
             {/*  */}
-
-            {datas.map((ele, ind) => (
+            {/* card section starts  */}
+            {datas.map((element, ind) => (
               <>
-                <ItemCard />
+                <ItemCard
+                  key={ind}
+                  element={element}
+                  handleClick={handleClick}
+                />
               </>
             ))}
+            {/* card section ends  */}
 
             {/*  */}
           </div>
