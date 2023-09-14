@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 import "./App.css";
 import ItemCard from "./Components/ItemCard";
+import DataCard from "./Components/DataCard";
 
 function App() {
   const [datas, setDatas] = useState([]);
@@ -56,7 +57,7 @@ function App() {
 
         {/* right card starts  */}
         <div className="cardRight bg-violet-600 w-[21%] ">
-          <h1>card left side </h1>
+          <DataCard />
         </div>
         {/* right card ends */}
       </div>
