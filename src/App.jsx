@@ -6,10 +6,43 @@ import DataCard from "./Components/DataCard";
 
 function App() {
   const [datas, setDatas] = useState([]);
+  const [selectedData, setSelectedData] = useState([]);
+  const [totalCredit, setTotalCredit] = useState(0);
+  const [remainingCredit, setRemainingCredit] = useState([20]);
 
   const handleClick = (element) => {
-    // console.log("button clicked ");
     // console.log(element);
+
+    const isHave = selectedData.find((ele) => ele.card_id === element.card_id);
+
+    // check to have duplicate value
+    if (isHave) {
+      return alert("Items already selesced ");
+    }
+
+    let credits = 0;
+    let remaining = 20;
+
+    // calculate selected credits
+    selectedData.forEach((ele) => {
+      credits += ele.credit;
+    });
+    credits += element.credit;
+
+    remaining -= credits;
+
+    // check remaing credits
+    if (remaining < 0) {
+      return alert("You have no credits left");
+    }
+
+    setRemainingCredit(remaining);
+
+    setTotalCredit(credits);
+
+    const newData = [...selectedData, element];
+
+    setSelectedData(newData);
   };
 
   useEffect(() => {
@@ -29,7 +62,7 @@ function App() {
 
   return (
     <>
-      <h1 className="  text-3xl pt-5 pb-4 font-semibold text-center ">
+      <h1 className="  text-3xl py-6  font-semibold text-center ">
         Course Registration
       </h1>
 
@@ -57,7 +90,11 @@ function App() {
 
         {/* right card starts  */}
         <div className="cardRight bg-violet-600 w-[21%] ">
-          <DataCard />
+          <DataCard
+            selectedData={selectedData}
+            totalCredit={totalCredit}
+            remainingCredit={remainingCredit}
+          />
         </div>
         {/* right card ends */}
       </div>
