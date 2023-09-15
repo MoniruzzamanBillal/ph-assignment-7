@@ -47,7 +47,7 @@ function App() {
     // check remaing credits
     if (remaining < 0) {
       return toast.warn(
-        "You have reached the credit hour limit.You can't take more than 20 credit hours !",
+        "Credit limit exceed.You can't take more than 20 credit hours !",
         {
           position: "top-center",
           autoClose: 5000,
@@ -75,26 +75,22 @@ function App() {
       const response = await fetch("blog.json");
       const responseData = await response.json();
 
-      // console.log(responseData);
-
       setDatas(responseData);
     };
 
     fetchData();
-
-    // console.log(datas);
   }, []);
 
   return (
     <>
-      <h1 className="  text-3xl py-6  font-semibold text-center ">
+      <h1 className="  text-3xl py-7  font-semibold text-center ">
         Course Registration
       </h1>
 
-      <div className="bodyContainer  w-[98%] sm:w-[95%] m-auto flex justify-between mb-8">
+      <div className="bodyContainer  w-full md:w-[97%] lg:w-[95%] m-auto flex flex-col md:flex-row  justify-between mb-8">
         {/* left card container starts  */}
-        <div className="cardLeft  w-[78%] ">
-          <div className="cardContainer  grid grid-cols-3 gap-x-4 gap-y-5 ">
+        <div className="cardLeft w-[76%] sm:w-[90%] md:w-[74%] lg:w-[79%] m-auto pb-8 md:pb-0  ">
+          <div className="cardContainer  grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-3 gap-y-4 ">
             {/*  */}
             {/* card section starts  */}
             {datas.map((element, ind) => (
@@ -114,7 +110,7 @@ function App() {
         {/* left card container ends */}
 
         {/* right card starts  */}
-        <div className="cardRight  w-[21%] ">
+        <div className="cardRight w-[80%] sm:w-[70%] md:w-[25%] lg:w-[20%] m-auto md:m-0 ">
           <DataCard
             selectedData={selectedData}
             totalCredit={totalCredit}

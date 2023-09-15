@@ -36,13 +36,13 @@ const ItemCard = ({ element, handleClick }) => {
 
         <div className="cardDetails  mb-4 flex justify-between items-center ">
           {/* left icon  */}
-          <div className="iconContainer  text-2xl ">
+          <div className="iconContainer   text-xl lg:text-2xl ">
             <BiDollar />
           </div>
           {/* left icon  */}
 
           {/* price section  */}
-          <div className="priceSection  text-xl text-gray-800 ">
+          <div className="priceSection text-base lg:text-lg  text-gray-800 ">
             <p>
               Price : <span> {price} </span>
             </p>
@@ -50,13 +50,13 @@ const ItemCard = ({ element, handleClick }) => {
           {/* price section  */}
 
           {/* book icon  */}
-          <div className="bookIconContainer  text-2xl">
+          <div className="bookIconContainer   text-xl lg:text-2xl">
             <BsBook />
           </div>
           {/* book icon  */}
 
           {/* credit section  */}
-          <div className="creditSection  text-xl text-gray-800 ">
+          <div className="creditSection text-base lg:text-lg text-gray-800 ">
             <p>
               Credit : <span>{credit}</span>hr
             </p>
