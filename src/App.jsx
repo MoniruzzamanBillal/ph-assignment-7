@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 
 import "./App.css";
+import { ToastContainer, toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 import ItemCard from "./Components/ItemCard";
 import DataCard from "./Components/DataCard";
 
@@ -17,7 +20,17 @@ function App() {
 
     // check to have duplicate value
     if (isHave) {
-      return alert("Items already selesced ");
+      // return alert("Items already selesced ");
+      return toast.warn("Item already selected !!", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
     }
 
     let credits = 0;
@@ -33,7 +46,19 @@ function App() {
 
     // check remaing credits
     if (remaining < 0) {
-      return alert("You have no credits left");
+      return toast.warn(
+        "You have reached the credit hour limit.You can't take more than 20 credit hours !",
+        {
+          position: "top-center",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        }
+      );
     }
 
     setRemainingCredit(remaining);
@@ -66,10 +91,10 @@ function App() {
         Course Registration
       </h1>
 
-      <div className="bodyContainer bg-green-300 w-[98%] sm:w-[95%] m-auto flex justify-between ">
+      <div className="bodyContainer  w-[98%] sm:w-[95%] m-auto flex justify-between mb-8">
         {/* left card container starts  */}
         <div className="cardLeft  w-[78%] ">
-          <div className="cardContainer bg-sky-400 grid grid-cols-3 gap-x-3 gap-y-4 ">
+          <div className="cardContainer  grid grid-cols-3 gap-x-4 gap-y-5 ">
             {/*  */}
             {/* card section starts  */}
             {datas.map((element, ind) => (
@@ -89,7 +114,7 @@ function App() {
         {/* left card container ends */}
 
         {/* right card starts  */}
-        <div className="cardRight bg-violet-600 w-[21%] ">
+        <div className="cardRight  w-[21%] ">
           <DataCard
             selectedData={selectedData}
             totalCredit={totalCredit}
@@ -98,6 +123,7 @@ function App() {
         </div>
         {/* right card ends */}
       </div>
+      <ToastContainer />
     </>
   );
 }
